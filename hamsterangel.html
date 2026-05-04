@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hamsterangel</title>
+<style>
+body {
+
+    background-color: #fff8fc;
+    background-image: url("bg wallp.jpg");
+    background-repeat: repeat;
+    font-family: "Comic Sans MS", "Century Gothic", cursive;
+    color: #ff9ac8;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+
+/* falling images */
+.fall {
+    position: fixed;
+    top: -50px;
+    animation: fall 10s linear infinite;
+    z-index: 9999;
+}
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
+
+
+}
+
+.lace-top {
+    background: url('pixelLace2.png') repeat-x top center;
+    height: 80px;
+    background-size: 200px auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	pointer-events: none; /* para di makasagabal sa click/scroll */
+	z-index: 9999;
+}
+
+.lace-bottom {
+    background: url('pixelLace1.png') repeat-x bottom center;
+    height: 80px;
+    background-size: 200px auto;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	pointer-events: none; /* para di makasagabal sa click/scroll */
+	z-index: 9999; /* para nasa ibabaw pero di tatakpan content box */
+
+}
+
+/* main layout */
+
+
+
+.container {
+    display: flex;
+    border: 2px solid #f2d4e2;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 100%;
+	max-width: 1300px;
+    height: calc(100vh - 100px);
+    margin: 0 auto;
+	position: relative;
+    padding-bottom: 10px;
+    padding-top: 50px;
+	
+	flex-wrap: nowrap;
+	
+	
+	
+
+
+}
+
+.sidebar {
+    
+    background-image: url("hi.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    overflow-y: auto;
+	padding-top: 20px;
+	flex: 1;
+	max-width: 250px;
+	border-radius: 15px;
+	border: 2px solid #f2d4e2;
+
+}
+
+.sidebar-top-img {
+    width: 150px;         /* adjust the size */
+    height: 150px;        /* adjust the size */
+    border-radius: 2%;  /* makes it circular */
+    object-fit: cover;   /* keeps image proportions */
+    border: 2px solid #ffb6d9; /* cute border */
+	margin-top: 0px;
+    margin-bottom: 5px; /* space between image and buttons */
+}
+
+.nav-text {
+    margin: 0;          /* removes top & bottom space */
+    padding: 0;         /* optional, just in case */
+    font-size: 14px;    /* adjust size */
+    color: #ffb6d9;     /* match your theme */
+    font-weight: bold;
+}
+
+.sidebar-banner {
+    margin-bottom: 0px; /* less space */
+}
+
+
+
+.sidebar button {
+    font-family: "Comic Sans MS", "Century Gothic", cursive;
+	font-size: 15px;
+    color: #b39086;
+	
+    border: 2px solid #f5bcd9;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    width: 180px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-align: center;
+	margin-top: 0px;
+	
+}	
+	
+	/* base button */
+.nav-btn {
+    background-size: cover;
+    background-position: center;
+	background-repeat: no-repeat;
+	
+
+}
+
+
+/* individual backgrounds */
+.home-btn {
+    background-image: url("81e64b60f8799836f9ef3a3a03d32799.jpg");
+}
+
+.about-btn {
+    background-image: url("b226436fcf6626c1b66827b39e317883.jpg");
+}
+
+.gallery-btn {
+    background-image: url("99ca2356e565d5c4941eb10d592e1d3d.jpg");
+	
+}
+
+.commissions-btn { 
+background-image: url("6f6c1ddc36efec64a640964533c67e02.jpg"); 
+
+}
+
+.socials-btn { 
+background-image: url("111db0fc0b96c8eb7d65d255244c0ec3.jpg"); 
+}
+
+.diary-btn { 
+background-image: url("ac56d589d42d45edf773faa929723fe7.jpg"); 
+}
+
+.extra-btn {
+background-image: url("4803678941f461dd310bd896d34579bf.jpg"); 
+}
+
+
+.sidebar {
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar button {
+    position: relative;
+    z-index: 11;
+}
+
+.sidebar button img {
+    pointer-events: none;
+}
+
+.sidebar button:hover {
+	background-image: none;
+    background-color: #ffffff;
+	color: #fac0d7;
+}
+
+.hidden {
+  display: none;
+    
+}
+
+
+
+
+.content {
+    
+	padding: 30px;
+    overflow-y: auto;
+	background-image: url("4ceb7005596ed7190f012e8e95161d2c.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+	position: relative;
+	
+	flex: 2;
+	
+	max-width: 750px;
+	min-width: 0;
+	width: 100%;
+	
+	position: relative;
+	z-index: 1;
+	
+
+
+}
+
+.content-box {
+    animation: fadeIn 0.3s ease;
+	  width: 100%;
+ 
+
+
+	
+}
+
+
+
+.hidden { display: none; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+
+
+}
+
+.sidebar::-webkit-scrollbar { width: 15px; }
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #f5bcd9;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #fff0f5; /* soft pink/lavender */
+    border-radius: 15px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #f5bcd9; /* cute pink */
+    border-radius: 10px;
+    border: 2px solid #fff0f5; 
+}
+
+/* optional hover effect */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #ffb6d9; /* change on hover */
+
+
+}
+
+.content::-webkit-scrollbar {
+  width: 15px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #ffe6f2; /* match sidebar bg or lighter shade */
+  border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #f5bcd9; /* pink color like your theme */
+  border-radius: 15px;
+  border: 2px solid #fff;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: #ffb6d9;
+
+/* extra boxxxxxx */
+}
+
+.extra-box {
+	background-image: url("5469bddba2d9ef7a497b0054a4132fba.jpg");
+    background-size: cover; /* or try contain / auto / 100% 100% */
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30%; /* adjust width as you like */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+ 
+  padding: 10px;
+  border-radius: 15px;
+  overflow-y: auto;
+
+	flex: 0 0 250px;
+	max-width: 250px;
+}
+
+.extra-box img {
+  width: 250px; /* adjust image size */
+  border-radius: 5px;
+  margin: 3px 0;
+  object-fit: cover;
+}
+
+.extra-box img.image1 {
+  max-width: 250px;
+ 
+}
+
+.extra-box img.image2 {
+  max-width: 200px;
+}
+
+.extra-box img.image3 {
+  max-width: 240px;
+}
+
+.extra-box img.image4 {
+  max-width: 240px;
+}
+
+.extra-box::-webkit-scrollbar {
+  width: 8px;
+}
+.extra-box::-webkit-scrollbar-thumb {
+  background: #ffb6d9;
+  border-radius: 10px;
+}
+.extra-box::-webkit-scrollbar-track {
+  background: #ffe6f2;
+
+/* mark for texts */
+}
+mark {
+  background-color: #ffe4ec;
+  color: #f7a8c8;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+  .title {
+    color: #ffa6d5;
+	font-size: 18px;
+
+/* para sa hati in half dun sa about content */
+/* para sa hati in half dun sa about content */
+}
+.two-column {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  padding: 0px;
+   box-sizing: border-box;
+    padding-left: 0px;
+  padding-right: 0px;
+  /* IMPORTANT: no top/bottom padding so line is sagad */
+  padding-top: 0;
+  padding-bottom: 0;
+  
+}
+
+/* LEFT and RIGHT areas */
+.two-column > div {
+  flex: 1;
+  padding: 0px 0; /* content lang yung may padding */
+  box-sizing: border-box;
+   min-height: auto;
+   
+   
+	
+}
+
+
+
+/* The center line */
+.two-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;     /* FULL HEIGHT talaga */
+  left: 50%;
+  width: 3px;
+ transform: translateX(-50%); /* keep perfectly centered */
+	  
+  /* dashed vertical line trick */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ffb6d9 0 8px,     /* dash color */
+    transparent 8px 16px
+  );
+
+	
+
+}
+  
+.left-side {
+  width: 100%;
+  padding-right: 0px;
+  
+ }
+	
+/* RIGHT column: make image and text sit side-by-side */
+.right-side {
+  display: block; 
+  align-items: flex-start;
+  gap: 0px;
+  width: 100%; 
+   margin-left: 0%; 
+  padding-left: 0;
+  box-sizing: border-box;
+  
+  
+}
+.right-content {
+  display: block;
+  overflow: hidden;
+  align-items: flex-start; /* image + text same top alignment */
+  gap: 10px; /* space between bunny and text */
+  width: 100%;
+  
+}
+
+/* bunny styling */
+.bunny-side {
+	float: left;
+  width: 250px;   /* adjust size */
+  max-width: 150px;
+  height: auto;
+  margin-right: 10px; 
+  flex-shrink: 0; /* prevents image from being squished */
+  display: block;
+}
+
+/* text on right */
+.right-text {
+  display: block;
+  overflow-wrap: break-word;
+  flex: 1; /* take remaining space */
+    text-align: left;
+	min-width: 0;	/* important to let text wrap inside flex */
+  max-width: 650px;
+  box-sizing: border-box;
+  
+  
+
+}
+
+/* content stays inside the pink box */
+.content-wrapper {
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+.image-box {
+  width: 300px;         
+  height: 300px;       
+  border: 2px dashed #8ab3ff;
+  padding: 8px;
+  overflow-y: auto;     
+  overflow-x: hidden;   
+  background-image: url("3baf5ca2928e280c611adbc309e4de7f.jpg"); 
+  border-radius: 12px;
+}
+
+
+.image-box img {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: block;
+}
+
+.image-box::-webkit-scrollbar {
+  width: 8px;             
+}
+
+.image-box::-webkit-scrollbar-track {
+  background: #ffe6f4;     
+  border-radius: 10px;
+}
+
+.image-box::-webkit-scrollbar-thumb {
+  background: #fcbbdb;     
+  border-radius: 10px;
+}
+
+.image-box::-webkit-scrollbar-thumb:hover {
+  background: #d78bb6;     
+}
+
+
+
+
+/* MAIN SPLIT */
+.art-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  box-sizing: border-box;
+  flex-wrap: nowrap; 
+}
+
+/* LEFT SIDE — 40% */
+.art-left {
+  width: 40%;
+  padding: 20px;
+  background-image: url("leftbg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #b88679;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Welcome text */
+.welcome-text {
+  font-size: 15px;
+  line-height: 1.4;
+  text-shadow: 0 0 3px white;
+}
+
+/* Buttons area */
+.art-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual BUTTON design */
+.art-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background-color: #ffd3e6;
+  border: 2px solid #ffb6d9;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Comic Sans MS", cursive;
+  color: #b88679;
+  text-shadow: 0 0 2px white;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center; 
+	
+}
+
+/* BTN ICON SIZE → EDIT HERE */
+.art-buttons button img {
+  width: 35px;   /* adjust size here */
+  height: 35px;  /* adjust size here */
+}
+
+/* Hover animation */
+.art-buttons button:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 5px 15px rgba(255, 182, 217, 0.6);
+    background-color: #ffd6eb;
+}
+
+.art-buttons button:hover img {
+    transform: rotate(10deg) scale(1.2);
+}
+
+.art-buttons button span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for text only */
+.art-buttons button:hover span {
+    transform: translateY(-5px) scale(1.1);
+    color: #e67ca3; /* optional: make text pop */
+}
+
+/* RIGHT SIDE — 60% */
+.art-right {
+  width: 50%;
+  padding: 10px;
+  
+  background-image: url('8764a523f6a3b4c98b306b32b75df3ef.jpg');
+  background-size: cover;      /* covers the whole div */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat;
+  
+  border-radius: 4px;
+  border: 4px dotted #ffb6d9;
+  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  
+   overflow-y: auto; /* if images are many, scroll */
+   max-height: 500px; /* set how tall the box should be */
+   
+  justify-content: flex-start;
+ 
+	column-count: 2;
+    column-gap: 10px;
+}
+
+/* ARTWORK IMAGES */
+.art-img {
+  width: 100%;
+  margin-bottom: 0px;
+  border-radius: 5px;
+}
+
+
+.welcome-text {
+    background-image: url('aa2a41d471a06dbaf2f147c1798a2117.jpg'); /* your image file */
+    background-size: cover;      /* makes it cover the whole div */
+    background-position: center; /* centers the image */
+    background-repeat: no-repeat;
+    padding: 20px;               /* space inside so text isn’t squished */
+    border-radius: 2px;         /* optional, for rounded corners */
+    color: #fc8bb3;                 /* text color so it’s readable */
+	border: 4px dashed #ffd6e7;
+   
+}
+
+.art-right::-webkit-scrollbar {
+    width: 8px;
+}
+
+.art-right::-webkit-scrollbar-thumb {
+    background-color: #e67ca3; /* scrollbar color */
+    border-radius: 10px;
+}
+
+.art-right::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); /* track color */
+}
+
+.art-item {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* optional bg for each item */
+    border-radius: 10px;
+    padding: 10px;
+	
+	box-sizing: border-box;
+	flex-direction: column;
+	
+    width: 100%;
+    margin-bottom: 0px;
+	
+	break-inside: avoid;
+	
+	
+}
+
+.art-item img {
+    width: 100%; /* adjust size of image */
+ 
+    border-radius: 4px;
+	height: auto;
+	display: block;
+	
+	
+	
+}
+
+.art-caption {
+    margin-top: 0px;
+    background-image: url('227a1a8902de784602ba6fe9ebfcd621.jpg'); /* bg for caption */
+    background-size: cover;
+    background-position: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #8c5468; /* caption text color */
+	
+	padding: 5px;
+	font-size: 14px;
+    
+}
+
+
+
+/* FULLSCREEN IMAGE VIEWER */
+.img-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(250, 202, 231, 0.50); /* pink fade */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10000;
+}
+
+.img-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+
+
+
+.my-link {
+  color: #ff9ac8;
+}
+
+.links-split {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.links-split::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 35%;                 
+  border-left: 4px dotted #fcb6d9;
+}
+
+.links-left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.links-right {
+  width: 65%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.links-right img {
+  max-width: 100%;
+  width: 200px; /* adjust image size */
+}
+
+.links-right p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+.mini-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.mini-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0px;
+  width: 150px;
+  height: 35px;
+
+  background: #ffe6f0;
+  border: 2px dotted #ff9ac8;
+  border-radius: 999px;
+  
+  
+  box-shadow: 0 3px 0 #fcb6d9;
+
+  text-decoration: none;
+  color: #b88679;
+  font-size: 14px;
+
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+
+
+.mini-btn img {
+  width: 22px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.mini-btn:hover {
+  background: #ffd3e6;
+  transform: translateX(2px);
+}
+
+
+</style>
+
+
+<script>
+
+function showContent(id, btn) {
+
+    // hide all content
+    const all = document.querySelectorAll('.content-box');
+    all.forEach(div => div.classList.add('hidden'));
+
+    // show selected
+    const selected = document.getElementById(id);
+    if (selected) {
+        selected.classList.remove('hidden');
+    }
+
+    // remove active
+    const buttons = document.querySelectorAll('.sidebar button');
+    buttons.forEach(b => b.classList.remove('active'));
+
+    // add active
+    if (btn) {
+        btn.classList.add('active');
+    }
+
+    // background change
+    const content = document.querySelector('.content');
+    let bg = "";
+
+    if (id === "home") {
+        bg = "url('8241ed46b5431cad493410d6f3b5d067.jpg')";
+    } else if (id === "about-me") {
+        bg = "url('download.png')";
+    } else if (id === "art-gallery") {
+        bg = "url('download.jpg')";
+    } else if (id === "art-commissions") {
+        bg = "url('Wallpaper - aqua stripes and pink polka dots.jpg')";
+    } else if (id === "socials-and-links") {
+        bg = "url('2dbafb6469e2b4f7fd578e42eb04f8db.jpg')";
+    } else if (id === "digital-journal-and-diary") {
+        bg = "url('diary bg.jpg')";
+    } else if (id === "additional-features") {
+        bg = "url('a6d8681ae63df854378e1aba788f8f2b.jpg')";
+    } else {
+        bg = "none";
+    }
+
+    if (content) {
+        content.style.backgroundImage = bg;
+    }
+}
+</script>
+
+
+
+
+</head>
+
+<body>
+
+<!-- Falling images -->
+<img src="tumblr_e93092bfa0a85063b69e0ecd7c5f2f8c_fbfa6d6a_500.webp" class="fall" style="left: 10%; animation-delay: 0s; width: 60px;">
+<img src="tumblr_e93092bfa0a85063b69e0ecd7c5f2f8c_fbfa6d6a_500.webp" class="fall" style="left: 30%; animation-delay: 2s; width: 60px;">
+<img src="tumblr_e93092bfa0a85063b69e0ecd7c5f2f8c_fbfa6d6a_500.webp" class="fall" style="left: 90%; animation-delay: 4s; width: 60px;">
+<img src="tumblr_e93092bfa0a85063b69e0ecd7c5f2f8c_fbfa6d6a_500.webp" class="fall" style="left: 50%; animation-delay: 1s; width: 60px;">
+<img src="tumblr_e93092bfa0a85063b69e0ecd7c5f2f8c_fbfa6d6a_500.webp" class="fall" style="left: 70%; animation-delay: 3s; width: 60px;">
+<img src="tumblr_a2198705f4b87d5f2fca05fd9818972c_f0d3b4b5_250.webp" class="fall" style="left: 20%; animation-delay: 0s; width: 60px;">
+<img src="tumblr_a2198705f4b87d5f2fca05fd9818972c_f0d3b4b5_250.webp" class="fall" style="left: 80%; animation-delay: 2s; width: 60px;">
+<img src="tumblr_a2198705f4b87d5f2fca05fd9818972c_f0d3b4b5_250.webp" class="fall" style="left: 40%; animation-delay: 1s; width: 60px;">
+<img src="tumblr_a2198705f4b87d5f2fca05fd9818972c_f0d3b4b5_250.webp" class="fall" style="left: 60%; animation-delay: 3s; width: 60px;">
+<img src="tumblr_a2198705f4b87d5f2fca05fd9818972c_f0d3b4b5_250.webp" class="fall" style="left: 100%; animation-delay: 4s; width: 60px;">
+
+<!-- Lace -->
+<div class="lace-top"></div>
+<!-- Lace Bottom -->
+<div class="lace-bottom"></div>
+
+<!-- Main container -->
+<div class="container">
+    <div class="sidebar">
+	
+		<img src="tumblr_d77cebbe98daa0b43d399e67ec3cfc07_e4854c3c_400.webp" class="sidebar-banner">
+		<img src="3f57954bf1e91bdf81b8465f41fe1c29.gif" class="sidebar-top-img">
+		
+		<p style="
+		display: block;
+		width: 100%;
+		background-image: url('d675c937b2a4459cd962d6c62eab0cbc.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 15px 20px;
+		border-radius: 5px;
+		border: 3px solid #ffd6e7;
+		color: #e67ca3;
+		text-align: center;
+		text-shadow: 0 0 3px white;
+		margin: 0;
+		line-height: 1;
+		">
+		 <b><img src="rainbowstar2.gif"> NAVIGATION ! <img src="teacup1.gif"><img src="musicnotes.gif"> </b>
+		</p>
+
+
+		<!--BUTTONS-->
+
+<!--BUTTONS-->
+
+<button class="nav-btn home-btn" onclick="showContent('home', this)">
+  home <img src="rainbowstar2.gif">
+</button>
+
+<button class="nav-btn about-btn" onclick="showContent('about-me', this)">
+  about me <img src="tumblr_inline_mg16fue1CQ1roozkr.gif">
+</button>
+
+<button class="nav-btn gallery-btn" onclick="showContent('art-gallery', this)">
+  art gallery <img src="strawberrystar.gif">
+</button>
+
+<button class="nav-btn commissions-btn" onclick="showContent('art-commissions', this)">
+  commissions portfolio <img src="bookwriting.gif">
+</button>
+
+<button class="nav-btn socials-btn" onclick="showContent('socials-and-links', this)">
+  my socials & links <img src="melody.gif">
+</button>
+
+<button class="nav-btn diary-btn" onclick="showContent('digital-journal-and-diary', this)">
+  my digital diary <img src="snaillove.gif"><img src="tumblr_21343c1edd8bd35b4ccec95fd6ec5f98_758106f4_75.png">
+</button>
+
+<button class="nav-btn extra-btn" onclick="showContent('additional-features', this)">
+  2 add <img src="pinklaptop.gif">
+</button>
+
+
+		<!-- image below buttons -->
+		<img src="bunsock.gif" alt="cute image" class="below-buttons">
+	
+	</div>
+	
+<!--CONTENTSSSSSSSSSSSSSSSS BELOW-->
+    <div class="content">
+
+        <!-- HOMEEEEEEE -->
+        <div id="home" class="content-box hidden">
+            <!--home content-->
+            <div style="text-align: center;">
+                <img src="flandiv.gif" style="width:230px;">
+                <img src="flandiv.gif" style="width:230px;">
+				<img src="flandiv.gif" style="width:230px;">
+				
+            </div>
+            <h2 style="
+                display: inline-block;
+                background-image: url('♡ ⠀๋⠀᳝ ୨୧ dolliestgirl⠀๋⠀᳝ ✧.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+			♬⋆.˚ home ૮ ྀིᴗ͈ . ᴗ͈ ྀིა
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+        <p style="
+                display: inline-block;
+                background-image: url('c50bcaa28d6fa41af744140359892e98.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #b88679;
+                text-shadow: 0 0 3px white;
+				
+            ">
+			
+			
+                <img src="hellobear.gif"><br>
+                <img src="tumblr_ce3d5550596eca610c795c476e20c867_19352625_500.png"><br>
+				<img src="luckyclover.png">
+                hello ! im <b>rai</b> :3 and welcom 2 My personal web (..◜ᴗ◝..) 
+                <img src="201004212059103e4.gif">
+                <img src="musicnote.gif"> <br>
+				please come on in and leave ur shoes on the door mat and sit on th table while i prepare 4 ur hot choco and snacks . .<img src="teacup.webp"> <img src="biscuiteat.gif"> <br> <br>
+                
+				i like to use this web to show everyone my art, <img src="cakeicon.webp"> my digital diaries & journal,<img src="book.gif"> evrything about me, <img src="2clovers.webp"> & MORE !!! <img src="120.gif"> <img src="starflowerr.png"><br>
+				<img src="parfait1.gif"> website is for personal purposes & 4 funsies onyl, so some pages r kinda funky nd unfinished bc of my laziness & this web is still working on progress ! <img src="tumblr_2d75e990216f6ed40d9c6767de0111bf_b2eb41bc_75.webp"><img src="p685se.gif"> <br>
+				<img src="tumblr_31329862bf07ae39a13557f6c354dad5_e899f747_75.webp"> please make urself at home ! ₍₍⚞(˶˃ ꒳ ˂˶)⚟⁾⁾<br>
+
+			<img src="tumblr_23dc1e5d8a8e9d63a29720971b09b5c6_abf287df_250.webp">
+			
+			
+		</p>
+		
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <img src="kitty.webp" class="divider-gif">
+			
+        </div>
+
+        <!-- about me bla bla bla -->
+        <div id="about-me" class="content-box hidden">
+            <div style="text-align: center;">
+                <img src="flandiv.gif" style="width:230px;">
+                <img src="flandiv.gif" style="width:230px;">
+				<img src="flandiv.gif" style="width:230px;">
+            </div>
+            <h2 style="
+                display: inline-block;
+                background-image: url('22e62a08d5e3a6bea59a251a1bba3682.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+                ₊˚⊹♡ about ᓚ₍⑅^..^₎♡
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+
+		    <div class="content-wrapper" style="
+                display: block;
+                background-image: url('0240b8b60025161f5d2573d672621ec7.jpg');
+                background-repeat: repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #b88679;
+                text-shadow: 0 0 3px white;
+				text-align: justify;
+            ">
+
+			  <div class="two-column">
+				  <div>
+					<div class="left-side">
+						<p style="margin:0; text-align:left;">
+							
+							<img src="tumblr_8d36265b169e0ab1aab0e7c681b3a073_e884ce90_250.webp" style="display:block; margin:0 auto; width:250px;";><br>
+							<img src="tumblr_2220d5fdb1f84ecad00ee320afe33962_77973073_100.webp"> im rai, rae, raz or whateaver. i go by many names .<img src="tumblr_024b59ebc43ee5739a2d695dd0ac1905_d5333e83_75.webp"><img src="strawberrystar.gif"> <br>
+							im a digital artist & My head only revolves around internet, fashion , all things cute and sweet kitschy, horror, music, animals & the Web virtual world !!!!!!!!!! <img src="puffystar.gif"> <br>
+							i am a nobody’s girl from a sleepy town in the middle of nowhere <img src="strawberrystar.gif"><img src="rainbowstar.gif"> (_　_)。゜zｚ <br><br>
+							btw im a college student majoring in I.T. and lowkey working as a freelancer artist by selling my art 4 pocket money , and i am 19 <b>*blinks eyes slowly*</b> <br> <br>
+							<img src="tumblr_8d36265b169e0ab1aab0e7c681b3a073_e884ce90_250.webp" style="display:block; margin:0 auto; width:250px;";><br>
+						</p>
+						
+								<p style="
+								display: block;
+								width: 83%;
+								background-image: url('458b8128dd23688fe754be82bc3a9fca.jpg');
+								background-repeat: no-repeat;
+								background-size: cover;
+								padding: 15px 20px;
+								border-radius: 5px;
+								border: 3px solid #ffd6e7;
+								color: #e67ca3;
+								text-align: center;
+								text-shadow: 0 0 3px white;
+								margin: 0;
+								line-height: 1;
+								">
+								 <b><img src="rainbowstar2.gif"> my likes & favorites ! <img src="teacup1.gif"><img src="musicnotes.gif"> </b>
+								</p>
+							<p><img src="housesparkle.gif"> <b>colors:</b> pink, cream, gray, brown, sometimes black .<br><hr style="border: none; border-top: 6px dotted pink;">
+							<img src="cakeicon.webp"><b> food: </b> sushi, my mom's cooks, sisig, fried tilapia, idk buldak carbonara and honeybutter chip <br><hr style="border: none; border-top: 6px dotted pink;">
+							<img src="teacup.png"><b> drinks: </b> BEER!!!!! , chocomilk, coke, cold water <br><hr style="border: none; border-top: 6px dotted pink;">
+							<img src="musicnotes.gif"><b> past times: </b> playing games, sleep, journaling, drawing (sometimes), music <br><br>
+								<p style="
+								display: block;
+								width: 83%;
+								background-image: url('458b8128dd23688fe754be82bc3a9fca.jpg');
+								background-repeat: no-repeat;
+								background-size: cover;
+								padding: 15px 20px;
+								border-radius: 5px;
+								border: 3px solid #ffd6e7;
+								color: #e67ca3;
+								text-align: center;
+								text-shadow: 0 0 3px white;
+								margin: 0;
+								line-height: 1;
+								">
+								 <b><img src="rainbowstar2.gif"> my interests <img src="teacup1.gif"><img src="musicnotes.gif"> </b>
+								</p>
+									<p><img src="ipod.gif"><b> music artists / bands: </b> mass of the fermenting dregs, midori (mariko goto), weezer,  uchu nekoko, tokenainamae, slowdive, duster, mitski, newjeans, tricot, wonder girls, kitchie nadal, panchiko, pinkpantheress, twice, babymetal, mars argo, deftones (sometimes), miraidempa, japshitfun <br><hr style="border: none; border-top: 6px dotted pink;">
+									<img src="rilatv.gif"><b> shows / movies:</b> girl interrupted, black swan, perfect blue, pearl, SAW franchise, world of kanako, liverleaf (musu musou), confessions (2010), character (2021), mean girls, dumplings (2001), the book of life, breaking bad, final destination franchise, the grudge <br><hr style="border: none; border-top: 6px dotted pink;">
+									<img src="sleepybear.gif"><b> games: </b> postal 2, alice madness: returns, lollipop chainsaw, webfishing, bioshock, tekken 6-8, stardew valley, roblox, dead by daylight<br><hr style="border: none; border-top: 6px dotted pink;">
+									<img src="NyWpQckUjkr5KJVxCck7.gif"><b> animanga: </b>kami no kodomo, another, lucky star!, pumpkin night, misu misou, satsuriku morph, perfect blue, erased, asobi asobase, watamote, azumanga daioh, nichijou<br> <hr style="border: none; border-top: 6px dotted pink;">
+									<img src="coat.gif"><b> fashion & clothing styles: </b>alt fashion, gothic,  mori kei, sweet lolita, himekaji, otome kei, fairy kei<br><hr style="border: none; border-top: 6px dotted pink;">
+									<img src="rilaheart.gif"><b> other stuff i like: </b>sudoku, touhou, horror games, moetron, writing, breakcore, sanrio, lolcows, the riddler from the batman 2022, mlp, picrew, jumpscares, shocksites, yabujin, puppet combo, IOSYS, chilla's arts, poppee the performer, learning HTML / coding, plushie, dressing up / customization games, stickers, keychains<br>
+									</p>
+									<img src="tumblr_8d36265b169e0ab1aab0e7c681b3a073_e884ce90_250.webp" style="display:block; margin:0 auto; width:250px;">
+					</div>
+				  </div>
+				  
+				  <!-- RIGHT column -->
+				  <div>
+					<div class="right-side">
+					
+					  <img src="blink meow.gif" class="bunny-side" alt="bunny"; style="align:left";>
+					  	<div class="right-text">
+						<p style="margin:0; text-align:left;">
+						  my friends usually refer me as a quiet girl with an awkward &  intimidating gaze . even though i keep saying im not DAT mean they insists i look mean and scary TT__TT<br>
+						  with that i tried my best to look more approachable, i tried to change my appearance to look more cute and not scary cuz im that desperate for friends (im kind of a loner)<br>
+						  <br>
+						  i waste my time by playing games all day, listen 2 music, maybe draw, and sleep.  i barely eat because im on my computer all day and sometimes i forget to talk or even open my mouth .<br>
+						  i am more of an observant person so i think that communicating is a lil bit exhausting , 
+						  even though i use different forms of media to share my thoughts and ideas, to my followers, friends, or whatevers .<br><br>
+						  i really like all cute stuff & im obsessed at collecting anything cute and sweet . i like plushies and stickers amd keychains. im probably the most cluttered girl in class and home . everything i own is pink and eveyrthing is customized with stickers, laces, polka dots, and whatevers .<br>
+						  i also like drinking beer especially with friends, sometimes i like hanging out and going 4 a walk . <br><br>
+						  
+						  as for the Art stuff im mastering animation & human anatomy nowadays .
+							also learnig to draw cool backgrounds and fisheye perspective !! animals and yum foods too .
+
+							<br><br>im berry delighted 2 Meet u !!!!! ໒꒰ྀི´ ˘ ` ꒱ྀིა<br>
+							
+							<img src="tumblr_c3505c42497c649895099fae8fafc425_38067774_250.webp" style="width:320px; display:block; margin:0 auto;">
+							<img src="tumblr_193546b8ff7eb0b3674de9f50af11dcc_5033208c_250.webp" style="width:320px;"><br><br>
+						</p>
+								<p style="
+								display: block;
+								width: 83%;
+								background-image: url('458b8128dd23688fe754be82bc3a9fca.jpg');
+								background-repeat: no-repeat;
+								background-size: cover;
+								padding: 15px 20px;
+								border-radius: 5px;
+								border: 3px solid #ffd6e7;
+								color: #e67ca3;
+								text-align: center;
+								text-shadow: 0 0 3px white;
+								margin: 0;
+								line-height: 1;
+								">
+								 <b><img src="rainbowstar2.gif"> my quiz results <img src="teacup1.gif"><img src="musicnotes.gif"> </b>
+								</p><br>
+							
+							
+							<div class="image-box">
+							  <a href="https://theotaku.com/quizzes/view/4097/what_dere_type_are_you%3F">
+								<img src="4097_Tsundere.jpg">
+							  </a>
+							  
+							  <a href="https://www.theotaku.com/quizzes/view/4069/what_type_of_otaku_are_you%3F">
+								<img src="4069_Casual_Otaku.jpg">
+							  </a>
+
+							  <a href="https://theotaku.com/quizzes/view/2424">
+								<img src="2424_Bernkastel.jpg">
+							  </a>
+							  
+							  <a href="https://www.theotaku.com/quizzes/view/4058/what_shoujo_anime_character_are_you%3F">
+								<img src="4058_Usagi_Tsukino.jpg">
+							  </a>
+							  
+							 <a href="https://theotaku.com/quizzes/view/1652">
+								<img src="1652_Because_i_feel_like_it.jpg">
+							  </a>
+							  
+							</div> <br>
+							<img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp" style="width:320px; display:block; margin:0 auto";><br>
+
+							<div style="
+							display: block;
+							background-image: url('890b2b1daa75fde547db15a61cae1720.jpg');
+							background-repeat: repeat;
+							background-size: cover;
+							padding: 20px;
+							border-radius: 5px;
+							border: 4px dashed #d6f5a9;
+							color: #b88679;
+							text-shadow: 0 0 3px white;
+							width: fit-content;
+							max-width: 280px;
+						">
+							<div style="text-align: center;">
+								
+								<h1 class="title"> <b>໒꒰ currently ꒱ა</b><br> </h1>
+							</div>
+
+							<div style="text-align: justify; margin-top: 10px;">
+								<b><mark>feeling:</mark></b> <a href="https://www.imood.com/users/raeulite"><img src="https://moods.imood.com/display/uname-raeulite/fg-ff6699/trans-1/imood.gif" style="width:60px";> </a> <br>
+								<b><mark>listening to:</mark></b> right now - newjeans<br>
+								<b><mark>eating / drinking:</mark></b> mac&cheese w Milk<br>
+								<b><mark>watching:</mark></b> none atm ^_^<br>
+								
+								<img src='shelfdiv.png' style="display:block; margin:0 auto; width:230px";>
+							</div><br>
+					
+						</div>
+						<img src="tumblr_c587e85c8ba896a0d57420e49da61648_d13d2e2e_400.webp" style="width:320px; display:block; margin:0 auto";>
+							
+					  </div>
+					</div>
+				  </div>
+				</div> <!-- end .two-column -->
+			  </div> <!-- end .content-wrapper -->
+
+
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <img src="bunnydiv.png" class="divider-gif">
+		</div>
+
+
+
+<!-- ART GALLERY -->
+<div id="art-gallery" class="content-box hidden">
+
+    <div style="text-align: center;">
+        <img src="flandiv.gif" style="width:230px;">
+        <img src="flandiv.gif" style="width:230px;">
+        <img src="flandiv.gif" style="width:230px;">
+    </div>
+
+    <h2 style="
+        display: inline-block;
+        background-image: url('0365149161d33a57d2c9c6c244f7e45c.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 3px solid #ffb6d9;
+        color: #e67ca3;
+        text-shadow: 0 0 3px white;
+    ">
+        ₊˚⊹ᰔ my art gallery ☆⌒(ゝ。∂)
+    </h2>
+
+    <div style="text-align: center;">
+        <img src="stardiv2.gif" style="width:335px;">
+        <img src="stardiv2.gif" style="width:335px;">
+    </div>
+
+    <!-- FIXED: this wrapper stays inside the art-gallery -->
+    <div class="art-wrapper">
+
+        <!-- LEFT SIDE -->
+        <div class="art-left">
+            <div class="welcome-text">
+				<img src="green angel.png" style="width:210px";><br>
+                <img src="strawberrystar.gif"> welcome 2 my digital art gallery! <img src="drawing.gif"> in this page i feature my most favorite & recent works ive done .. click the images for a better look ! <img src="melody.gif"><img src="tumblr_abf187f3d6a69c587b212a8861db1c2d_b59b5f84_75.webp"><br><br>
+                i ll try to keep this updated whenever i have motivation , also its ok to repost my art as long as u tell and ask me first ! :33 <br><br>
+                thats all , thx chu 4 being here
+            </div><br>
+			<img src="tumblr_682f75afa4809fbb20d59df87bd2bad6_fa68f175_250.webp">
+			<div class="art-buttons">
+				<button onclick="filterArt('sketches')">
+					<img src="342fd08941fa3d82cd034d7e09cd68db-removebg-preview.png"> <span>Sketches</span>
+				</button>
+
+				<button onclick="filterArt('artworks')">
+					<img src="ae949ebae9831fe782c01cf9529600b8-removebg-preview.png"> <span>Artworks</span>
+				</button>
+
+				<button onclick="filterArt('commissions')">
+					<img src="5951c7cc0af8bfd75c32a7a7092dad0a-removebg-preview.png"> <span>Commissions</span>
+				</button>
+			</div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+<div class="art-right">
+
+<!----------------------------SKETCHES------------------------------>
+
+    <div class="art-item" data-category="sketches">
+        <img src="ailith_redesign.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>my oc: ailith</p>
+        </div>
+    </div>
+
+    <div class="art-item" data-category="sketches">
+        <img src="april12th.png" alt="sketch 2">
+        <div class="art-caption">
+            <p>april 12th 2025 - self portrait</p>
+        </div>
+    </div>
+
+    <div class="art-item" data-category="sketches">
+        <img src="are_u_insane_stop_attacking__IMEDIEATELTY_ARUUGURUGHHUHHHHJJJHDGEGJJ.png" alt="sketch 3">
+        <div class="art-caption">
+            <p>practice</p>
+        </div>
+    </div>
+	
+	    <div class="art-item" data-category="sketches">
+        <img src="ailith_1.png" alt="sketch 4">
+        <div class="art-caption">
+            <p>ailith (first design)</p>
+        </div>
+    </div>
+	
+	    <div class="art-item" data-category="sketches">
+        <img src="asasasasa.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>lolita practice</p>
+        </div>
+    </div>
+	
+		    <div class="art-item" data-category="sketches">
+        <img src="e.png" alt="sketch 6">
+        <div class="art-caption">
+            <p>e</p>
+        </div>
+    </div>
+	
+		    <div class="art-item" data-category="sketches">
+        <img src="i_hate_everything.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>i_hate_everything</p>
+        </div>
+    </div>
+	
+		    <div class="art-item" data-category="sketches">
+        <img src="i_wanna_kill_myself.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>i_wanna_kill_myself</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="ok.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>ok,png</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="raberry_2.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>#oldme</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="renia_redesign.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>renia rio</p>
+        </div>
+    </div>
+
+			<div class="art-item" data-category="sketches">
+        <img src="TANGINA.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>TANGINA (4ever wip)</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="what_summoned_me_to_draw_this_character_2.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>cool ka lang</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="lirith_2.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>lirith (oc) first design</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="lucienne__morelle_twins_sketch.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>lucienne & morelle twins sketch</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled95_20240212032554.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>konata on crack</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled86.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>yue</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled71_20231118115927.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>cyborg maid sketh</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled7.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>anotha self portrait</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="lirith_design2.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>lirith design#02</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="yue_lolita_sketch.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>yue in lolita</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="yueueueue.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>yueueueue</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled47_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>meow</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled48_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>#trying</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled68_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>pervert....</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled179_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>Untitled179_1</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled184_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>Untitled184_1</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled269_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>yue before her ED looool</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="20231009_234845.jpg" alt="sketch 5">
+        <div class="art-caption">
+            <p>20231009_234845</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="20231009_234827.jpg" alt="sketch 5">
+        <div class="art-caption">
+            <p>splitting</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled45_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>Untitled45_1</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="one_lyer_drawing.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>one_lyer_drawing</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled20.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>random cat in game i dra</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled22.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>practice</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled87.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>Untitled87</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled14_20230730023431.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>forgotten oc i forgot</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled293_20250213075942.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>ok......</p>
+        </div>
+    </div>
+
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled218.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>i just feel like renderig face and never finished it</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled291.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>i see My Future & its bright</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled200.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>ROBLOX</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled201.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>ROBLOX 2</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled117.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>practice agan</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled312_1.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>can u guys tell i like rendering faces</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled341.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>doodle @ cemetery</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled117.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>practice agan</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled71.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>brush_test</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="20231009_234804.jpg" alt="sketch 5">
+        <div class="art-caption">
+            <p>monster sona meow</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="20231009_234901.jpg" alt="sketch 5">
+        <div class="art-caption">
+            <p>20231009_234901</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled56_2.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>Untitled56_2</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled78.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>warmup</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled96.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>yelow</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled55.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>old fursona</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled57_20230430051418.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>old fursona [2]</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="sketches">
+        <img src="Untitled30.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>me&liit</p>
+        </div>
+    </div>
+	
+				<div class="art-item" data-category="sketches">
+        <img src="Untitled29.png" alt="sketch 5">
+        <div class="art-caption">
+            <p>me&liit 2</p>
+        </div>
+    </div>
+	
+<!----------------------------ARTWORKS------------------------------>
+
+    <div class="art-item" data-category="artworks">
+        <img src="papapapapapparaparapapapapa_yeay_yae_yaeea_.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>practice</p>
+        </div>
+    </div>
+	
+	   <div class="art-item" data-category="artworks">
+        <img src="souvenir1.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>birthday souvenir 1</p>
+        </div>
+    </div>
+	
+		   <div class="art-item" data-category="artworks">
+        <img src="souvenir2.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>birthday souvenir 2</p>
+        </div>
+    </div>
+	
+		   <div class="art-item" data-category="artworks">
+        <img src="tomato_head_wip.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>birthday souvenir 3</p>
+        </div>
+    </div>
+	
+		   <div class="art-item" data-category="artworks">
+        <img src="wajdjahdjad_a.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>i think this is like kyaru pamyu or somethingf</p>
+        </div>
+    </div>
+	
+		   <div class="art-item" data-category="artworks">
+        <img src="Untitled101_20240812173933.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>stinkyy old orblox av</p>
+        </div>
+    </div>
+	
+		   <div class="art-item" data-category="artworks">
+        <img src="ractice.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>outfit</p>
+        </div>
+    </div>
+	
+			   <div class="art-item" data-category="artworks">
+        <img src="practice_1.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>i just like drawing clothes..</p>
+        </div>
+    </div>
+	
+			   <div class="art-item" data-category="artworks">
+        <img src="Untitled81_20230929223449.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>kuchisake-onna fanart</p>
+        </div>
+    </div>
+	
+	
+		<div class="art-item" data-category="artworks">
+        <img src="Untitled62.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>fb sticker ; hacker girl</p>
+        </div>
+    </div>
+	
+				   <div class="art-item" data-category="artworks">
+        <img src="Untitled23_20230816123209.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>idk</p>
+        </div>
+    </div>
+	
+				   <div class="art-item" data-category="artworks">
+        <img src="Untitled75.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>M E A T</p>
+        </div>
+    </div>
+	
+				   <div class="art-item" data-category="artworks">
+        <img src="arceno_art_comp.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>my take in our school art comp .</p>
+        </div>
+    </div>
+	
+		<div class="art-item" data-category="artworks">
+        <img src="Untitled259_20240926235112.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>mredraw</p>
+        </div>
+    </div>
+	
+		<div class="art-item" data-category="artworks">
+        <img src="Untitled220.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>azumamga in slowdive souvlaki album (wow)</p>
+        </div>
+    </div>
+	
+		<div class="art-item" data-category="artworks">
+        <img src="yue_.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>my first yue portrait</p>
+        </div>
+    </div>
+	
+<!----------------------------COMMISSIONS------------------------------>
+
+		<div class="art-item" data-category="commissions">
+        <img src="comm20.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#1</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="commissions">
+        <img src="comm26 (with bg).png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#2</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="commissions">
+        <img src="comm3 watermark.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#3</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="commissions">
+        <img src="comm22_comm_wm.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#4</p>
+        </div>
+    </div>
+	
+		<div class="art-item" data-category="commissions">
+        <img src="comm12_with_comm_wm.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#5</p>
+        </div>
+    </div>
+	
+		<div class="art-item" data-category="commissions">
+        <img src="comm23 with blood.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#6</p>
+        </div>
+    </div>
+	
+			<div class="art-item" data-category="commissions">
+        <img src="comm27.png" alt="sketch 1">
+        <div class="art-caption">
+            <p>#7</p>
+        </div>
+    </div>
+	
+	
+</div>
+
+
+    </div> <!-- END art-wrapper -->
+
+    <!-- FIXED: THESE SHOULD BE AFTER art-wrapper but STILL inside art-gallery -->
+    <div style="text-align: center;">
+        <img src="stardiv2.gif" style="width:335px;">
+        <img src="stardiv2.gif" style="width:335px;">
+    </div>
+
+    <img src="bunnyscarf.gif" class="divider-gif">
+
+</div> <!-- END art-gallery -->
+
+	
+	        <!-- art comms / SHOP -->
+         <div id="art-commissions" class="content-box hidden">
+ 
+            <h2 style="
+                display: inline-block;
+                background-image: url('da7fdd40e2280a1575cf12f917c12e11.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+                𝄞 art commissions ٩(ˊᗜˋ*)و ♡
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <p style="
+                display: inline-block;
+                background-image: url('0240b8b60025161f5d2573d672621ec7.jpg');
+                background-repeat: repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #b88679;
+                text-shadow: 0 0 3px white;
+            ">
+				
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="terms.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="pricings.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="pricings-robux.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				
+				<img src="frillybow.gif"> <a href="https://www.roblox.com/games/8829819625/rai-roblox-commissions-mm#!/store" class="my-link"><u>click me</u></a> to go 2 the link of my roblox gamepass store if evr u wanna buy one without commissioning me that;s ok too LOOOLLLL <img src="bunny5.gif">:
+				<br>
+				
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="sample-sketch.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="sample-lineart.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="sample-flatcolors.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="sample-rendered.png" style="width:670px";><br>
+				<img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><img src="tumblr_24737007e74911e5351d8411e4d571a1_373c578c_250.webp"><br>
+				<img src="tumblr_d671b5b4fb0b7b12fe9dc20651057de8_7088d7f0_250.webp" style="width: 320px";><br>
+
+			</p>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <img src="miffyascii.png" class="divider-gif">
+        </div>
+	
+	       <!-- socials & links -->
+         <div id="socials-and-links" class="content-box hidden">
+            <div style="text-align: center;">
+                <img src="flandiv.gif" style="width:230px;">
+                <img src="flandiv.gif" style="width:230px;">
+				<img src="flandiv.gif" style="width:230px;">
+				
+            </div>
+            <h2 style="
+                display: inline-block;
+                background-image: url('b63d2a7832319df62ab8ed1f772c8d63.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+              ♬⋆.˚ my socials and links (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <div style="
+					display: inline-block;
+					background-image: url('b3d304c8b3a9a6789a2c039d87645448.jpg');
+					background-repeat: repeat;
+					background-size: cover;
+					padding: 10px 20px;
+					border-radius: 5px;
+					border: 3px solid #ffb6d9;
+					color: #b88679;
+					text-shadow: 0 0 3px white;
+				">
+					<div style="text-align: center;">
+						<img src="tumblr_c587e85c8ba896a0d57420e49da61648_d13d2e2e_400.webp"><br>
+						<img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><br>
+						<h2>⋆ ˚｡⋆୨ ʚ links ! ɞ ୧⋆ ˚｡⋆</h2>
+					</div>
+
+						<div class="links-split">
+							<div class="links-left">
+									<div class="mini-buttons">
+										<img src="laceribbon.png" style="width: 210px">
+			
+										<a href="https://www.facebook.com/junkyqr" class="mini-btn">
+											<img src="wp0wqr.gif" style="width:20px" alt=""> 
+											facebook
+										</a>
+									 
+										<a href="https://x.com/9ykio_0v" class="mini-btn">
+											<img src="4yg89e.gif" style="width:20px" alt="">
+											twitter
+										</a>
+										
+										<a href="https://vgen.co/raiworm" class="mini-btn">
+											<img src="bdsn73.gif" style="width:20px" alt=""> 
+											vgen
+										</a>
+										
+										<a href="https://raiworm.carrd.co" class="mini-btn">
+											<img src="gqfuw9.png" style="width:20px" alt=""> 
+											carrd
+										</a>
+										
+										 
+										<a href="https://raiworm.straw.page" class="mini-btn">
+											<img src="je24t0.gif" style="width:20px" alt="">
+											strawpage
+										</a>
+									</div>
+									
+									<img src="tumblr_1c0e95bc2abf75af55e040c807362435_7f899040_250.webp">
+									
+							</div>
+							<div class="links-right">
+								<div class="right-img center-align">
+									<img src="tumblr_d77cebbe98daa0b43d399e67ec3cfc07_e4854c3c_400.webp" alt="side image" style="width:300px";>
+								</div>
+									
+								<p class="right-text">
+									HELLO!!!!!!!!1 <img src="tumblr_cedc402f2054a38c7485c5e51c54459b_3431e565_75.webp" style="width:25px"> u can find me thru these links in my left if u evr want 2 contact me !<img src="wiujth.gif" style="width:20px"> feel free 2 message me thru <u>discord only</u> 
+									if interested on my commissions orrr if u wna be friends w me (yay)<img src="tumblr_c8f67d6802a8d012c260927b4c594c6f_49d612e9_75.webp" style="width:70px"><br>
+								</p>
+									
+								<div class="right-img center-align">
+									<img src="tumblr_913552f2075a5df02dc9eba94eec721a_6c8f7f09_250.gif" alt="side image" style="width:90px;"> 
+									<img src="tumblr_15beca3e0b350bff19b78084729b3d84_7b1f6930_250.gif" alt="side image" style="width:90px;"> 
+									<img src="tumblr_14aec27774973b571cfd8e3dcc06fab1_6dcdac20_250.gif" alt="side image" style="width:90px;"> 
+									<img src="tumblr_a438118f161bcc716c5c570a679e41e7_f1871d9b_250.png" alt="side image" style="width:90px;"><br>
+								
+									<img src="tumblr_c88bf4c4270291e82fc40e94f8be54d3_1bdba56c_250.webp">
+									<img src="tumblr_30ed8ca1ba2b7fd2920b11eb7aaa4588_ce540fc0_250.webp">
+									<img src="tumblr_21f07ee6a1783e6188185e697ef6f4f4_64b38895_400.webp">
+									<img src="tumblr_305e195951b1f1b68418ee21409a0a00_d2b20c44_250.webp">
+								</div>
+							</div>
+						</div>
+
+						<div style="text-align: center;">
+							<img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><br>
+						</div>
+							  
+						<div style="text-align: center;">
+							<h2>⋆ ˚｡⋆୨ ʚ contacts ! ɞ ୧⋆ ˚｡⋆</h2>
+						</div>
+							
+						<div style="text-align: justify;"><h3>
+							<img src="skzz9f.gif"> <b>꒰discord:꒱</b> nyankomailtrollw<br>
+							<img src="slgyav.gif"> <b>꒰⁠email:꒱</b> raeyuko0@gmail.com<br></h3>
+						</div>
+							
+						<div style="text-align: center;">
+							<img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><img src="tumblr_a5aff634f34ffebadca7796aa6994fdb_81a5d52a_400.webp"><br>
+							<img src="tumblr_c587e85c8ba896a0d57420e49da61648_d13d2e2e_400.webp">
+						</div>
+            </div>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <img src="Rilakkumabath.gif" class="divider-gif">
+        </div>
+		
+			<!-- digital journal & diary ;pp -->
+         <div id="digital-journal-and-diary" class="content-box hidden">
+            <div style="text-align: center;">
+
+				
+            </div>
+            <h2 style="
+                display: inline-block;
+                background-image: url('039c61a8a8ccdf8884044803579e4060.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+             ₊˚⊹⋆ my digital diary (˶ˆ꒳ˆ˵)
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <p style="
+                display: inline-block;
+                background-image: url('download (3).png');
+                background-repeat: repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #b88679;
+                text-shadow: 0 0 3px white;
+            ">
+				<img src="download (22).jpg" style="width: 400px">
+            </p>
+			
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <img src="knittingbun.webp" class="divider-gif">
+        </div>
+	
+
+
+
+
+	       <!-- additional features for the future hehehehehe -->
+         <div id="additional-features" class="content-box hidden">
+            <div style="text-align: center;">
+                <img src="flandiv.gif" style="width:230px;">
+                <img src="flandiv.gif" style="width:230px;">
+				<img src="flandiv.gif" style="width:230px;">
+				
+            </div>
+            <h2 style="
+                display: inline-block;
+                background-image: url('b63d2a7832319df62ab8ed1f772c8d63.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #e67ca3;
+                text-shadow: 0 0 3px white;
+            ">
+              ♬⋆.˚ adding soon !‧₊˚♪ 𝄞₊˚⊹
+            </h2>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <p style="
+                display: inline-block;
+                background-image: url('b3d304c8b3a9a6789a2c039d87645448.jpg');
+                background-repeat: repeat;
+                background-size: cover;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 3px solid #ffb6d9;
+                color: #b88679;
+                text-shadow: 0 0 3px white;
+				text-align: justify;
+            ">
+			
+				<img src="tumblr_096526976fadcead70ba60f56aebf496_ddb7b5f2_250.webp"><img src="tumblr_096526976fadcead70ba60f56aebf496_ddb7b5f2_250.webp"><br>
+				
+				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> page for the game im working on: <b>teeth & porcelain</b><br>
+				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> page for the novel/comic im also working on: <b>deadman;s last wish</b><br>
+				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> different bg image for the navigation buttons <br>
+				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> fix the raining gifs code <br>
+            </p>
+            <div style="text-align: center;">
+                <img src="stardiv2.gif" style="width:335px;">
+                <img src="stardiv2.gif" style="width:335px;">
+            </div>
+            <br><img src="teddybear.gif" class="divider-gif">
+        </div>
+		
+
+
+
+
+
+</div>
+
+<div class="extra-box">
+	<img src="3N1EAGh.gif" alt="cute deco" class="image2">
+  <img src="4035ff1247566569e36b50a5c7db5a8b.gif" alt="image1" class="deco-img">
+  
+<div style="
+    display: block;
+    background-image: url('e2238d90fad6fac93a8e1c423c467096.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 5px;
+    border: 5px solid #d6f5a9;
+    color: #b88679;
+    text-shadow: 0 0 3px white;
+    width: fit-content;
+    max-width: 600px;
+">
+    <div style="text-align: center;">
+        <img src='tumblr_893737918c191236a41cbb791ea4d7a1_98095d2b_400.webp'><br>
+        <h1 class="title"> <b><u>໒꒰ daily affirmations : ꒱ა</u></b><br> </h1>
+    </div>
+
+    <div style="text-align: justify; margin-top: 10px;">
+        <b><mark>♡ 1.</mark></b> im super normal and well adjusted<br>
+        <b><mark>♡ 2.</mark></b> my pulse is normal<br>
+        <b><mark>♡ 3.</mark></b> im not a disaster<br>
+		<b><mark>♡ 4.</mark></b> i am goated<br>
+		<b><mark>♡ 5.</mark></b> nothing;s embarrasing<br>
+		<b><mark>♡ 6.</mark></b> time will pass<br>
+		<b><mark>♡ 7.</mark></b> everything will be alright<br>
+		
+		<img src='tumblr_a8137477c309036f142f5c52bed3ec29_ebddca14_250.webp'>
+		<img src='tumblr_893737918c191236a41cbb791ea4d7a1_98095d2b_400.webp'>
+		
+    </div>
+</div>
+  
+  <img src="⊹ ˚ ♪.jpg" alt="cute deco" class="image3">
+  <img src="tumblr_59c1f47a4c4ed467b2f505c2fb4d0558_582d72e9_400.webp" alt="cute deco" class="image4">
+
+
+
+</div>
+
+
+
+    </div> <!-- end of .content -->
+</div> <!-- end of .container -->
+
+<script>
+window.onload = function() {
+    showContent("home");
+};
+</script>
+
+<!-- IMAGE VIEWER MODAL -->
+<div id="imgModal" class="img-modal">
+  <img id="modalImg">
+</div>	
+
+<script>
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+
+function enableGalleryZoom() {
+  document.querySelectorAll(".art-item img").forEach(img => {
+    img.onclick = () => {
+      modalImg.src = img.src;
+      modal.classList.add("active");
+    };
+  });
+}
+
+modal.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+/* re-bind when switching tabs */
+const originalShowContent = showContent;
+showContent = function(id) {
+  originalShowContent(id);
+  setTimeout(enableGalleryZoom, 50);
+};
+
+/* first load */
+window.addEventListener("load", enableGalleryZoom);
+</script>
+
+<script>
+function filterArt(category) {
+  const items = document.querySelectorAll(".art-item");
+
+  items.forEach(item => {
+    if (item.dataset.category === category) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+
+/* show all by default */
+function showAllArt() {
+  document.querySelectorAll(".art-item").forEach(item => {
+    item.style.display = "block";
+  });
+}
+</script>
+
+</body>
+
+</html>
