@@ -101,7 +101,6 @@ body {
 	
 	
 
-
 }
 
 .sidebar {
@@ -295,7 +294,7 @@ background-image: url("4803678941f461dd310bd896d34579bf.jpg");
     border: 2px solid #fff0f5; 
 }
 
-/* optional hover effect */
+
 .sidebar::-webkit-scrollbar-thumb:hover {
     background-color: #ffb6d9; 
 
@@ -343,7 +342,7 @@ background-image: url("4803678941f461dd310bd896d34579bf.jpg");
 }
 
 .extra-box img {
-  width: 250px; /* adjust image size */
+  width: 250px; 
   border-radius: 5px;
   margin: 3px 0;
   object-fit: cover;
@@ -389,8 +388,7 @@ mark {
     color: #ffa6d5;
 	font-size: 18px;
 
-/* para sa hati in half dun sa about content */
-/* para sa hati in half dun sa about content */
+
 }
 .two-column {
   display: flex;
@@ -401,7 +399,7 @@ mark {
    box-sizing: border-box;
     padding-left: 0px;
   padding-right: 0px;
-  /* IMPORTANT: no top/bottom padding so line is sagad */
+
   padding-top: 0;
   padding-bottom: 0;
   
@@ -410,7 +408,7 @@ mark {
 /* LEFT and RIGHT areas */
 .two-column > div {
   flex: 1;
-  padding: 0px 0; /* content lang yung may padding */
+  padding: 0px 0; 
   box-sizing: border-box;
    min-height: auto;
    
@@ -418,22 +416,20 @@ mark {
 	
 }
 
-
-
 /* The center line */
 .two-column::before {
   content: "";
   position: absolute;
   top: 0;
-  bottom: 0;     /* FULL HEIGHT talaga */
+  bottom: 0;     
   left: 50%;
   width: 3px;
- transform: translateX(-50%); /* keep perfectly centered */
+ transform: translateX(-50%); 
 	  
-  /* dashed vertical line trick */
+  /* dashed vertical line  */
   background-image: repeating-linear-gradient(
     to bottom,
-    #ffb6d9 0 8px,     /* dash color */
+    #ffb6d9 0 8px,     
     transparent 8px 16px
   );
 
@@ -447,7 +443,7 @@ mark {
   
  }
 	
-/* RIGHT column: make image and text sit side-by-side */
+/* RIGHT column: */
 .right-side {
   display: block; 
   align-items: flex-start;
@@ -462,8 +458,8 @@ mark {
 .right-content {
   display: block;
   overflow: hidden;
-  align-items: flex-start; /* image + text same top alignment */
-  gap: 10px; /* space between bunny and text */
+  align-items: flex-start; 
+  gap: 10px; 
   width: 100%;
   
 }
@@ -471,11 +467,11 @@ mark {
 /* bunny styling */
 .bunny-side {
 	float: left;
-  width: 250px;   /* adjust size */
+  width: 250px;   
   max-width: 150px;
   height: auto;
   margin-right: 10px; 
-  flex-shrink: 0; /* prevents image from being squished */
+  flex-shrink: 0; 
   display: block;
 }
 
@@ -483,9 +479,9 @@ mark {
 .right-text {
   display: block;
   overflow-wrap: break-word;
-  flex: 1; /* take remaining space */
+  flex: 1; 
     text-align: left;
-	min-width: 0;	/* important to let text wrap inside flex */
+	min-width: 0;	
   max-width: 650px;
   box-sizing: border-box;
   
@@ -493,7 +489,7 @@ mark {
 
 }
 
-/* content stays inside the pink box */
+
 .content-wrapper {
   display: block;
   overflow: hidden;
@@ -600,8 +596,8 @@ mark {
 
 /* BTN ICON SIZE → EDIT HERE */
 .art-buttons button img {
-  width: 35px;   /* adjust size here */
-  height: 35px;  /* adjust size here */
+  width: 35px;   
+  height: 35px;  
 }
 
 /* Hover animation */
@@ -623,7 +619,7 @@ mark {
 /* Hover effect for text only */
 .art-buttons button:hover span {
     transform: translateY(-5px) scale(1.1);
-    color: #e67ca3; /* optional: make text pop */
+    color: #e67ca3; 
 }
 
 /* RIGHT SIDE — 60% */
@@ -632,8 +628,8 @@ mark {
   padding: 10px;
   
   background-image: url('8764a523f6a3b4c98b306b32b75df3ef.jpg');
-  background-size: cover;      /* covers the whole div */
-  background-position: center; /* centers the image */
+  background-size: cover;      
+  background-position: center; 
   background-repeat: no-repeat;
   
   border-radius: 4px;
@@ -643,8 +639,8 @@ mark {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   
-   overflow-y: auto; /* if images are many, scroll */
-   max-height: 500px; /* set how tall the box should be */
+   overflow-y: auto; 
+   max-height: 500px; 
    
   justify-content: flex-start;
  
@@ -661,13 +657,13 @@ mark {
 
 
 .welcome-text {
-    background-image: url('aa2a41d471a06dbaf2f147c1798a2117.jpg'); /* your image file */
-    background-size: cover;      /* makes it cover the whole div */
-    background-position: center; /* centers the image */
+    background-image: url('aa2a41d471a06dbaf2f147c1798a2117.jpg'); 
+    background-size: cover;     
+    background-position: center; 
     background-repeat: no-repeat;
-    padding: 20px;               /* space inside so text isn’t squished */
-    border-radius: 2px;         /* optional, for rounded corners */
-    color: #fc8bb3;                 /* text color so it’s readable */
+    padding: 20px;              
+    border-radius: 2px;        
+    color: #fc8bb3;                
 	border: 4px dashed #ffd6e7;
    
 }
@@ -677,18 +673,18 @@ mark {
 }
 
 .art-right::-webkit-scrollbar-thumb {
-    background-color: #e67ca3; /* scrollbar color */
+    background-color: #e67ca3; 
     border-radius: 10px;
 }
 
 .art-right::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2); /* track color */
+    background: rgba(255, 255, 255, 0.2); 
 }
 
 .art-item {
     position: relative;
     text-align: center;
-    background: rgba(255, 255, 255, 0.1); /* optional bg for each item */
+    background: rgba(255, 255, 255, 0.1); 
     border-radius: 10px;
     padding: 10px;
 	
@@ -704,7 +700,7 @@ mark {
 }
 
 .art-item img {
-    width: 100%; /* adjust size of image */
+    width: 100%; 
  
     border-radius: 4px;
 	height: auto;
@@ -716,12 +712,12 @@ mark {
 
 .art-caption {
     margin-top: 0px;
-    background-image: url('227a1a8902de784602ba6fe9ebfcd621.jpg'); /* bg for caption */
+    background-image: url('227a1a8902de784602ba6fe9ebfcd621.jpg');
     background-size: cover;
     background-position: center;
     padding: 5px 10px;
     border-radius: 5px;
-    color: #8c5468; /* caption text color */
+    color: #8c5468; 
 	
 	padding: 5px;
 	font-size: 14px;
@@ -737,7 +733,7 @@ mark {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(250, 202, 231, 0.50); /* pink fade */
+  background: rgba(250, 202, 231, 0.50); 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -801,7 +797,7 @@ mark {
 
 .links-right img {
   max-width: 100%;
-  width: 200px; /* adjust image size */
+  width: 200px; 
 }
 
 .links-right p {
@@ -1894,7 +1890,7 @@ function showContent(id, btn) {
 
     </div> <!-- END art-wrapper -->
 
-    <!-- FIXED: THESE SHOULD BE AFTER art-wrapper but STILL inside art-gallery -->
+
     <div style="text-align: center;">
         <img src="stardiv2.gif" style="width:335px;">
         <img src="stardiv2.gif" style="width:335px;">
@@ -2186,6 +2182,7 @@ function showContent(id, btn) {
 				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> fix navigation buttons <br>
 				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> fix the raining gifs code <br>
 				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> add : THE art oat / showcase of 1 fav art <br>
+				<img src="tumblr_77b474909588d92a40ba538b4d41c488_2f70a25f_75.webp"> fix in mobile view (might take a while) <br>
             </p>
             <div style="text-align: center;">
                 <img src="stardiv2.gif" style="width:335px;">
