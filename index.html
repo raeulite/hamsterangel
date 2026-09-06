@@ -850,6 +850,66 @@ mark {
   transform: translateX(2px);
 }
 
+
+
+	        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 500px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 25px 15px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .profile-info {
+                align-items: center;
+                text-align: center;
+            }
+
+            .avatar {
+                width: 110px;
+                height: 110px;
+            }
+
+            .profile h1 {
+                font-size: 23px;
+                justify-content: center;
+            }
+
+            .category-button {
+                min-height: 55px;
+                font-size: 15px;
+            }
+
+            .multi-account.active .platform-button {
+                width: 90px;
+                height: 90px;
+                font-size: 13px;
+            }
+
+            .multi-account {
+                gap: 7px;
+            }
+
+            .account-links a,
+            .playlist-links-grid a {
+                min-height: 40px;
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+
+	
 </style>
 
 
